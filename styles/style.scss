@@ -9,8 +9,6 @@ $black: #2d2d2d;
 $purple-dark: #130027;
 $gray-dark: #aaa;
 $gray-light: #ddd;
-$orange: #ffab40;
-$orange-light: #ffd8a6;
 
 /* Timing */
 $fast: 0.2s;
@@ -18,11 +16,10 @@ $slow: 0.6s;
 
 /* Spacing */
 $default-padding: 16px;
-$section-padding: 40px;
-$side-padding: 140px;
+$main-content-width: 920px;
 
 /* Mixins */
-@mixin border-radius($radius) {
+@mixin border-radius($radius: 6px) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
@@ -82,6 +79,7 @@ $side-padding: 140px;
   display: flex;
 }
 
+
 /* Utility classes */
 .portrait {
   width: 200px;
@@ -97,10 +95,12 @@ $side-padding: 140px;
   text-shadow: none;
 }
 
-/* Mobile first queries */
+
+/* General (mobile first) */
 html {
   background-color: #14061b;
 }
+
 body {
   // background-color: #032928;
   background: url(../images/background-2.jpg);
@@ -126,69 +126,78 @@ a {
   }
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 footer {
-  padding: 16px;
+  padding: $default-padding;
   text-align: center;
 }
 
 #image-carousel {
   height: 300px;
-  // width: 100%;
+  padding: $default-padding;
+
   background: url(../images/saxophonist.jpg);
   background-size: cover;
-  background-position: top;
-  display: flex;
+  background-position: bottom;
+  
+  @include flexbox();
   align-items: flex-end;
-  padding: 0 $side-padding;
+  justify-content: center;
 }
 
 main {
   margin: $default-padding auto;
-  // padding: $side-padding/2 $side-padding;
-  width: 920px;
-  max-width: 90%;
-
-  // @include flexbox();
-  // flex-wrap: wrap;
+  width: $main-content-width;
+  max-width: 100%;
 }
 
-#bio {
-  flex-basis: 100%;
-  // background: rgba(255,255,255,0.1);
-  // color: $black;
-  font-size: 1.5em;
-  text-align: justify;
-
-  p {
-    margin: 0;
-    padding: $default-padding;
-  }
-}
-#categories {
-  flex-basis: 100%;
-}
 #title-container {
-  flex-basis: 100%;
-  display: flex;
-  align-items: center;
+  width: $main-content-width;
+  max-width: 100%;
+
+  @include flexbox();
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: $default-padding;
+  flex-wrap: wrap;
+
   @include text-shadow(2px, 2px, 2px, black);
+
+  // Give all immediate children some padding
+  > * {
+    margin: $default-padding;
+  }
+
   #title {
-    div:first-child {
-      font-size: 5em;
-      font-family: $title-font;
-    }
+    font-size: 3em;
+    font-family: $title-font;
   }
   .contact-info {
-    font-size: 1.5em;
+    font-size: 1em;
     list-style-type: none;
   }
   .contact-item {
-    // float: right;
+    @include transition(all);
+    &:hover {
+      @include scale(1.03);
+    }
   }
 }
 
+#categories {
+  flex-basis: 100%;
+}
+#cv {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: $black;
+
+  @include border-radius();
+  padding: $default-padding;
+  margin: $default-padding;
+}
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
@@ -206,6 +215,8 @@ main {
       justify-content: center;
 
       @include box-shadow(0px, 0px, 10px, 1px, rgba(255,255,255,0.2));
+      @include border-radius();
+      z-index: 2; /* To avoid border-radius disappearing during transition */
 
       .category-background {
         position: absolute;
@@ -220,21 +231,30 @@ main {
         @include grayscale(60%);
         @include transition(all, $slow);
       }
+      /* Specify backgrounds */
+      #conductor-background { background-image: url(../images/conductor.jpg) }
+      #saxophonist-background { background-image: url(../images/saxophonist.jpg) }
+      #music-educator-background { background-image: url(../images/music-educator.jpg) }
+      #master-thesis-background { background-image: url(../images/master-thesis.jpg) }
 
       .category-caption {
         @include transition(all);
         z-index: 1;
         text-align: center;
         background: rgba(0, 0, 0, 0.6);
-        width: 100%;
+        // width: 100%;
+        padding: $default-padding;
+        @include border-radius();
         color: $white;
         align-self: center;
       }
 
       &:hover {
+        @include border-radius();
+
         .category-background {
           @include scale(1.03);
-          @include grayscale(10%);
+          @include grayscale(0);
         }
         .category-caption {
           // font-size: 1.05em;
@@ -246,36 +266,26 @@ main {
 
 #info-list {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
+
 
 /* Larger than tablet */
 @media (min-width: 768px) {
-  #bio {
-    flex-basis: 30%;
-  }
-  #categories {
-    flex-basis: 70%;
+  #title-container {
+    #title {
+      font-size: 5em;
+    }
+    .contact-info {
+      font-size: 1.5em;
+    }
   }
 
   .category-grid {
     .category-item-wrapper {
       flex-basis: 50%;
-
-      .category-item {
-        .category-description {
-          opacity: 0;
-        }
-
-        &:hover {
-          .category-description {
-            opacity: 1;
-          }
-        }
-      }
     }
   }
+
   #info-list {
     li {
       display: inline-block;
