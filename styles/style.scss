@@ -6,7 +6,10 @@ $title-font: 'Bilbo Swash Caps';
 /* Colors */
 $white: #fdfdfd;
 $black: #2d2d2d;
+$purple: #3f0a65;
 $purple-dark: #130027;
+$purple-light: #c097de;
+$purple-lighter: #e5c5fd;
 $gray-dark: #aaa;
 $gray-light: #ddd;
 
@@ -16,13 +19,15 @@ $slow: 0.6s;
 
 /* Spacing */
 $default-padding: 16px;
-$main-content-width: 920px;
+$main-content-width: 1920px;
+
+$category-item-height: 400px;
 
 /* Backgrounds */
 #conductor-background { background-image: url(../images/conductor.jpg) }
 #saxophonist-background { background-image: url(../images/saxophonist.jpg) }
 #music-educator-background { background-image: url(../images/music-educator.jpg) }
-#master-thesis-background { background-image: url(../images/master-thesis.jpg) }
+#master-thesis-background { background-image: url(../images/master-thesis.png) }
 
 /* Mixins */
 @mixin border-radius($radius: 6px) {
@@ -32,11 +37,11 @@ $main-content-width: 920px;
           border-radius: $radius;
 }
 
-@mixin transition($property, $duration: $fast) {
-  -webkit-transition: $property $duration ease-out;
-     -moz-transition: $property $duration ease-out;
-      -ms-transition: $property $duration ease-out;
-          transition: $property $duration ease-out;
+@mixin transition($property, $duration: $fast, $easing: ease-in-out) {
+  -webkit-transition: $property $duration $easing;
+     -moz-transition: $property $duration $easing;
+      -ms-transition: $property $duration $easing;
+          transition: $property $duration $easing;
 }
 
 @mixin scale($ratio) {
@@ -100,20 +105,26 @@ $main-content-width: 920px;
   color: #3f0a65;
   text-shadow: none;
 }
+.fa-white {
+  color: $white;
+  text-shadow: none;
+}
 
 
 /* General (mobile first) */
 html {
-  background-color: #14061b;
+  background-color: #fafbfc;
 }
 
 body {
-  background-image: url(../images/background-0.jpg);
-  background-size: cover;
+  // background-image: url(../images/background-2.jpg);
+  // background-size: cover;
+  background-color: #fafbfc;
   font-family: $body-font;
   font-weight: 300;
-  color: $white;
+  color: $black;
   margin: 0;
+  // padding-bottom: 200px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -121,143 +132,247 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
+hr {
+  margin-top: 2*$default-padding;
+  margin-bottom: 2*$default-padding;
+  width: 80%;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 a {
-  color: white;
+  color: $purple-light;
   text-decoration: none;
   @include transition(color);
 
   &:hover {
-    color: #c097de;
+    color: $purple;
   }
 }
 
 ul {
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.master-thesis-list {
+  li { 
+    padding-left: 1em;
+    &:before {
+      content: "■ ";
+      margin-right: 0.5em;
+      color: $purple;
+    }
+  }
 }
 
 footer {
   padding: $default-padding;
   text-align: center;
+  background-color: rgba(192, 151, 222, 0.07);
 }
 
-#image-carousel {
-  height: 300px;
+// header {
+//   @include flexbox();
+//   flex-direction: column;
+//   justify-content: space-around;
+//   @media (min-width: 768px) {
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//   }
+
+//   position: fixed;
+//   padding: $default-padding;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   background-color: rgba(255, 255, 255, 0.95);
+//   z-index: 99;
+//   border-bottom: 1px dashed $purple;
+
+//   #title-container {
+//     @include flexbox();
+//     align-items: flex-end;
+//     justify-content: space-between;
+//     flex-wrap: wrap;
+
+//     // Give all immediate children some padding
+//     > * {
+//       margin: $default-padding;
+//     }
+
+//     #title {
+//       font-size: 3em;
+//       font-family: $title-font;
+//     }
+//     max-height: 200px;
+//     @include transition(max-height, $slow);
+//   }
+//   .contact-info {
+//     @include flexbox();
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+
+//     font-size: 1em;
+//     .contact-item {
+//       @include transition(all);
+//       &:hover {
+//         @include scale(1.03);
+//       }
+//     }
+//   }
+
+//   &.compact {
+//     #title-container {
+//       max-height: 0;
+//       @media (min-width: 768px) {
+//         max-height: 200px;
+//       }
+//     }
+//     .contact-info {
+//       font-size: 0.8em;
+//       @media (min-width: 768px) {
+//         font-size: 1em;
+//       }
+//     }
+//   }
+// }
+
+.contact-info {
+  position: fixed;
   padding: $default-padding;
-
-  background: url(../images/saxophonist.jpg);
-  background-size: cover;
-  background-position: bottom;
-  
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 99;
+  // border-top: 1px dashed $purple;
   @include flexbox();
-  align-items: flex-end;
   justify-content: center;
-}
-
-main {
-  margin: $default-padding auto;
-  width: $main-content-width;
-  max-width: 100%;
-}
-
-#title-container {
-  width: $main-content-width;
-  max-width: 100%;
-
-  @include flexbox();
-  align-items: flex-end;
-  justify-content: space-between;
   flex-wrap: wrap;
+  // justify-content: space-around;
+  justify-content: flex-end;
+  // font-size: 1em;
+  font-size: 1.5em;
 
-  @include text-shadow(2px, 2px, 2px, black);
-
-  // Give all immediate children some padding
-  > * {
-    margin: $default-padding;
+  @include box-shadow(0px, 0px, 5px, 0px, #cfc8d4);
+  
+  @media (min-width: 768px) {
   }
 
-  #title {
-    font-size: 3em;
-    font-family: $title-font;
-  }
-  .contact-info {
-    font-size: 1em;
-    list-style-type: none;
-  }
   .contact-item {
+    padding: 0 $default-padding;
     @include transition(all);
     &:hover {
       @include scale(1.03);
     }
-  }
-}
 
-#categories {
-  flex-basis: 100%;
-}
-#info {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: $black;
-
-  @include border-radius();
-  padding: $default-padding;
-  margin: $default-padding;
-
-  .category-item {
-    position: relative;
-    height: 100px;
-    margin: auto (-$default-padding);
-
-    .category-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    .category-caption {
-      @include flexbox();
-      text-align: center;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      padding: $default-padding;
-      color: $white;
-
-      > * {
-        align-self: center;
-      width: 100%;
+    .contact-item-text {
+      display: none;
+      @media (min-width: 768px) {
+        display: inline-block;
       }
     }
   }
 }
 
+main {
+  margin: auto;
+  // margin-top: 250px;
+  // @media (min-width: 768px) {
+  //   margin-top: 180px;
+  // }
+  width: $main-content-width;
+  max-width: 100%;
+}
+
+#categories {
+  flex-basis: 100%;
+}
+// #info {
+//   color: $black;
+
+//   padding: $default-padding;
+//   margin: $default-padding;
+
+//   .category-item {
+//     position: relative;
+//     height: 140px;
+//     margin: 3*$default-padding (-$default-padding) $default-padding (-$default-padding);
+
+//     .category-background {
+//       @include border-radius();
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       background-size: cover;
+//       background-position: center center;
+//       background-repeat: no-repeat;
+//     }
+
+//     .category-caption {
+//       @include border-radius();
+//       @include flexbox();
+//       text-align: center;
+//       position: absolute;
+//       top: 0;
+//       bottom: 0;
+//       left: 0;
+//       right: 0;
+//       text-align: center;
+//       background: rgba(0, 0, 0, 0.6);
+//       padding: $default-padding;
+//       color: $white;
+
+//       > * {
+//         align-self: center;
+//       width: 100%;
+//       }
+//     }
+//   }
+// }
+
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
+  // height: 100vh;
 
   .category-item-wrapper {
     flex-basis: 100%;
+    @include transition(all, $slow);
 
     .category-item {
+      .mobile-only {
+        max-height: 50px;
+        @include transition(max-height, $slow);
+      }
+      &.open {
+        .category-caption {
+          .mobile-only {
+            max-height: 0;
+            overflow: hidden;
+          }
+          .category-text {
+            max-height: $category-item-height;
+          }
+        }
+      }
+      // margin: $default-padding;
+      cursor: pointer;
       position: relative;
-      height: 300px;
-      margin: $default-padding;
+      height: $category-item-height;
       overflow: hidden;
 
       @include flexbox();
       justify-content: center;
 
-      @include box-shadow(0px, 0px, 10px, 1px, rgba(255,255,255,0.2));
-      @include border-radius();
+      // @include box-shadow(0px, 0px, 10px, 1px, rgba(255,255,255,0.2));
+      // @include border-radius();
       z-index: 2; /* To avoid border-radius disappearing during transition */
 
       .category-background {
@@ -278,23 +393,34 @@ main {
         @include transition(all);
         z-index: 1;
         text-align: center;
-        background: rgba(0, 0, 0, 0.6);
-        // width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
         padding: $default-padding;
-        @include border-radius();
+        // @include border-radius();
         color: $white;
         align-self: center;
+
+        .category-text {
+          text-align: left;
+          a {
+            &:hover {
+              color: $purple-lighter;
+            }
+          }
+
+          
+          max-height: 0;
+          overflow: hidden;
+          @include transition(max-height, $slow);
+        }
       }
 
       &:hover {
-        @include border-radius();
+        // @include border-radius();
 
         .category-background {
           @include scale(1.03);
           @include grayscale(0);
-        }
-        .category-caption {
-          // font-size: 1.05em;
         }
       }
     }
@@ -305,15 +431,15 @@ main {
   list-style-type: none;
 }
 
-
 /* Larger than tablet */
 @media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+
   #title-container {
     #title {
       font-size: 5em;
-    }
-    .contact-info {
-      font-size: 1.5em;
     }
   }
 

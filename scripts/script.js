@@ -12,22 +12,19 @@ $(document).ready(function(){
   // Scroll smoothly to element with id matching clicked element
   $('.scroll-link').click(function(e) {
     e.preventDefault();
-    var id = $(this).attr('href');
-    $('html, body').animate({ scrollTop: $( id ).offset().top - 20 }, scrollSpeed);
+    // var id = $(this).attr('href');
+    // $('html, body').animate({ scrollTop: $( id ).offset().top - 80 }, scrollSpeed);
+    $(this).toggleClass('open');
+    // $(this).find('.category-text').slideToggle();
   });
 
-  // $('.highlight-link').click(function(e) {
-  //   e.preventDefault();
-  //   var id = $(this).attr('href');
-  //   $( id ).css('background', 'yellow');
-  // });
-
-  $('#no-background').click(function() {
-    currentColorIndex = (currentColorIndex + 1) % colors.length;
-    $('body').css('background', colors[currentColorIndex])
-  })
-  $('#toggle-background').click(function() {
-    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-    $('body').css('background', 'url(../images/background-'+currentBackgroundIndex+'.jpg)')
-  })
 })
+
+// $(document).on( 'scroll', function() {
+//   if ($('#header').offset().top < 100) {
+//     $('#header').removeClass('compact');
+//   }
+//   else {
+//     $('#header').addClass('compact');
+//   }
+// });
