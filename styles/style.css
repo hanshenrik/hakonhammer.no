@@ -1,3 +1,14 @@
+/* Mixins */
+/* Utility classes */
+.portrait {
+  width: 200px; }
+
+.circled {
+  border-radius: 50%; }
+
+.img-responsive {
+  width: 100%; }
+
 /* Fonts */
 /* Colors */
 /* Timing */
@@ -13,26 +24,41 @@
   background-image: url(../images/music-educator.jpg); }
 
 #master-thesis-background {
-  background-image: url(../images/master-thesis.png); }
+  background-image: url(../images/master-thesis.jpg); }
 
-/* Mixins */
-/* Utility classes */
-.portrait {
-  width: 200px; }
+.image-attribution {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 16px;
+  font-size: 11px;
+  color: #bbb; }
 
-.circled {
-  border-radius: 50%; }
+.center {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 50px 30px black;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); }
 
-.img-responsive {
-  width: 100%; }
-
-.fa-purple {
-  color: #3f0a65;
-  text-shadow: none; }
-
-.fa-white {
+.title {
+  text-align: center;
   color: #fdfdfd;
-  text-shadow: none; }
+  font-family: "Megrim";
+  font-size: 36px; }
 
 /* General (mobile first) */
 html, body, main, #categories, .category-grid {
@@ -49,8 +75,10 @@ body {
   margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Lato";
-  font-weight: 300; }
+  font-family: "Monofett";
+  font-weight: 300;
+  font-size: 28px;
+  text-shadow: #130027 2px 1px 1px; }
 
 a {
   color: #a06fc3;
@@ -115,8 +143,11 @@ footer {
       justify-content: center;
       z-index: 2;
       /* To avoid border-radius disappearing during transition */ }
+      .category-grid .category-item-wrapper .category-item.open {
+        background-color: rgba(0, 0, 0, 0.4); }
       .category-grid .category-item-wrapper .category-item .category-background {
         position: absolute;
+        box-shadow: 0 0 50px 30px black inset;
         top: 0;
         left: 0;
         z-index: 0;
@@ -140,15 +171,17 @@ footer {
         transition: opacity 0.6s ease-in-out;
         z-index: 1;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.6);
-        width: 100%;
         padding: 16px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        border-radius: 6px;
         color: #fdfdfd;
-        align-self: center;
-        cursor: pointer; }
+        align-self: center; }
         .category-grid .category-item-wrapper .category-item .category-content:hover .read-more-icon {
           color: #e5c5fd; }
         .category-grid .category-item-wrapper .category-item .category-content .read-more-icon {
+          display: none;
           margin-left: 0.5em;
           -webkit-transition: all 0.4s ease-in-out;
           -moz-transition: all 0.4s ease-in-out;
@@ -156,6 +189,12 @@ footer {
           transition: all 0.4s ease-in-out; }
         .category-grid .category-item-wrapper .category-item .category-content .category-text {
           display: none;
+          background-color: rgba(0, 0, 0, 0.666);
+          padding: 16px;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          -ms-border-radius: 6px;
+          border-radius: 6px;
           text-align: left; }
           .category-grid .category-item-wrapper .category-item .category-content .category-text a:hover {
             color: #e5c5fd; }
@@ -207,5 +246,13 @@ footer {
       @media (min-width: 768px) {
         .contact-info .contact-item .contact-item-text {
           display: inline-block; } }
+
+.fa-purple {
+  color: #3f0a65;
+  text-shadow: none; }
+
+.fa-white {
+  color: #fdfdfd;
+  text-shadow: none; }
 
 /*# sourceMappingURL=style.css.map */
