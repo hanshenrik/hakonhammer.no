@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Monofett%7CMegrim%7CMonoton%7CBilbo+Swash+Caps%7CLato:400,300" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="styles/balloon/balloon.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -17,47 +18,51 @@
   <meta name="author" content="Hans Henrik Grønsleth" />
 </head>
 <body>
-<!-- 
-<header id="header">
-  <div id="title-container">
-    <div><div id="title">Håkon Hammer</div><div id="subtitle">Saksofonist, dirigent og musikkpedagog i Trondheim</div>
-    </div>
-  </div>
-</header> -->
 
-<div class="contact-info">
+<header>
   <div class="contact-item">
-    <a href="tel:+4712345678" class="contact-icon">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-phone fa-stack-1x fa-white"></i>
-      </span>
-    <span class="contact-item-text">123 45 678</span>
-    </a>
+    <span data-balloon="123 45 678" data-balloon-pos="left">
+      <a href="tel:+4712345678" class="contact-icon">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-phone fa-stack-1x fa-white"></i>
+        </span>
+      </a>
+    </span>
+    <!-- <span class="contact-item-text">123 45 678</span> -->
   </div>
-  <div class="contact-item">
-    <a href="mailto:noe@noe.no" target="_blank" class="contact-icon">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-envelope fa-stack-1x fa-white"></i>
-      </span>
-      <span class="contact-item-text">hakonhammer@gmail.com</span>
-    </a>
-  </div>
-</div>
-
-<div class="center">
   <div class="title">Håkon Hammer</div>
-</div>
+  <div class="contact-item">
+    <span data-balloon="hakonhammer@gmail.com" data-balloon-pos="right">
+      <a href="mailto:noe@noe.no" target="_blank" class="contact-icon">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-envelope fa-stack-1x fa-white"></i>
+        </span>
+      </a>
+    </span>
+  </div>
+</header>
 
 <div class="category-grid">
   <div class="category-item-wrapper">
     <div href="#saxophonist" class="category-item scroll-link">
       <div class="category-background" id="saxophonist-background"></div>
       <div class="category-content">
-        <h2>Saksofonist<i class="read-more-icon fa fa-chevron-circle-down"></i></h2>
+        <div class="category-title">Saksofonist<i class="fa fa-chevron-circle-down read-more-icon"></i></div>
         <div class="category-text">
           Saksofonisten Håkon Hamer har et bredt nettverk av dyktige musikere rundt seg, og kan skreddersy musikkinnslag til ditt event med DJ <a href="https://www.facebook.com/reggie2k/" title="Reggie got beats" target="_blank">Reggie got beats</a>, blåserekke, jazzband, taffelmusikk duo, partyband, og <a href="http://www.smoller.no/" title="S. Møller Storband" target="_blank">S. Møller Storband</a>. Håkon tar på seg spilleoppdrag både som solist og med band. Han spiller også i bryllup og begravelser. For tiden er Håkon mest aktiv med folkejazzbandet <a href="#" title="Netland Hammer Folkekvartett" target="_blank">Netland Hammer Folkekvartett</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="category-item-wrapper">
+    <div href="#music-educator" class="category-item scroll-link">
+      <div class="category-background" id="music-educator-background"></div>
+      <div class="category-content">
+        <div class="category-title">Musikkpedagog<i class="fa fa-chevron-circle-down read-more-icon"></i></div>
+        <div class="category-text">
+          Musikkpedagogen Håkon Hammer har en mastergrad i musikkvitenskap i tillegg til Praktisk-pedagogisk utdanning fra NTNU. Han har undervisningserfaring fra videregående, ungdomsskole, barneskole, kulturskole, privatelever, korps- og storbandseminarer. Håkon har i tillegg til sin dybdekompetanse i saksofon grunnleggende ferdigheter på tverrfløyte, gitar, sang og piano.
         </div>
       </div>
     </div>
@@ -66,7 +71,7 @@
     <div href="#conductor" class="category-item scroll-link">
       <div class="category-background" id="conductor-background"></div>
       <div class="category-content">
-        <h2>Dirigent<i class="read-more-icon fa fa-chevron-circle-down"></i></h2>
+        <div class="category-title">Dirigent<i class="fa fa-chevron-circle-down read-more-icon"></i></div>
         <div class="category-text">
           Håkon Hammer er fast dirigent i <a href="http://heimdalstorband.no/" title="Heimdal Storband" target="_blank">Heimdal Storband</a> og <a href="http://www.smoller.no/" title="S. Møller Storband" target="_blank">S. Møller Storband</a>. Han har erfaring som dirigent både i korps, kor og storband, og kan leies inn som instruktør og dirigent på seminarer.
         </div>
@@ -75,36 +80,25 @@
     </div>
   </div>
   <div class="category-item-wrapper">
-    <div href="#music-educator" class="category-item scroll-link">
-      <div class="category-background" id="music-educator-background"></div>
-      <div class="category-content">
-        <h2>Musikkpedagog<i class="read-more-icon fa fa-chevron-circle-down"></i></h2>
-        <div class="category-text">
-          Musikkpedagogen Håkon Hammer har en mastergrad i musikkvitenskap i tillegg til Praktisk-pedagogisk utdanning fra NTNU. Han har undervisningserfaring fra videregående, ungdomsskole, barneskole, kulturskole, privatelever, korps- og storbandseminarer. Håkon har i tillegg til sin dybdekompetanse i saksofon grunnleggende ferdigheter på tverrfløyte, gitar, sang og piano.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="category-item-wrapper">
     <div href="#master-thesis" class="category-item scroll-link">
       <div class="category-background" id="master-thesis-background"></div>
       <div class="category-content">
-        <h2>Masteroppgave «Musikk i butikk»<i class="read-more-icon fa fa-chevron-circle-down"></i></h2>
+        <div class="category-title">Masteroppgave «Musikk i butikk»<i class="fa fa-chevron-circle-down read-more-icon"></i></div>
         <div class="category-text">
           I 2015 skrev Håkon Hammer masteroppgaven <a href="#" title="Musikk i butikk" target="_blank">Musikk i butikk &ndash; En studie av hvordan «bakgrunnsmusikk» brukes i klesbutikk</a> på NTNU Oppgaven tar for seg hvordan musikk kan brukes for å påvirke atmosfæren i en butikk. Den går i dybden på bruken av musikk i klesbutikker med sentrale temaer som aktiv/passiv lytting, musikkpersepsjon, musikksemiotikk, hvordan vi knytter musikk til følelser, assosiasjoner, klær, identitet, atmosfære og hvordan dette kan brukes opp mot kundegrupper og salg. Oppgaven setter det hele inn i en historisk kontekst i en musikkvitenskapelig diskurs.
         </div>
       </div>
     </div>
+    <footer>
+      <ul id="info-list">
+        <li>Håkon Hammer &copy; <span id="current-year">2016</span></li>
+        <li>Alle rettigheter forbeholdt</li>
+        <li>Utforming av <a href="https://github.com/hanshenrik" target="_blank">hanshenrik</a></li>
+      </ul>
+    </footer>
   </div>
 </div>
 
-<footer>
-  <ul id="info-list">
-    <li>Håkon Hammer &copy; <span id="current-year">2016</span></li>
-    <li>Alle rettigheter forbeholdt</li>
-    <li>Utforming av <a href="https://github.com/hanshenrik" target="_blank">hanshenrik</a></li>
-  </ul>
-</footer>
 
 </body>
 </html>

@@ -6,7 +6,7 @@
           border-radius: $radius;
 }
 
-@mixin transition($property, $duration: $fast, $easing: ease-in-out) {
+@mixin transition($property: all, $duration: $fast, $easing: ease-in-out) {
   -webkit-transition: $property $duration $easing;
      -moz-transition: $property $duration $easing;
       -ms-transition: $property $duration $easing;
@@ -67,6 +67,22 @@
   display: flex;
 }
 
+@mixin box-shadow($top: 0, $left: 0, $blur: 2px, $spread: 1px, $color: black, $inset: false, $none: false) {
+  @if $none {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  } @else if $inset {
+    -webkit-box-shadow: inset $top $left $blur $spread $color;
+    -moz-box-shadow: inset $top $left $blur $spread $color;
+    box-shadow: inset $top $left $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $spread $color;
+    -moz-box-shadow: $top $left $blur $spread $color;
+    box-shadow: $top $left $blur $spread $color;
+  }
+}
+
 /* Utility classes */
 .portrait {
   width: 200px;
@@ -76,4 +92,8 @@
 }
 .img-responsive {
   width: 100%;
+}
+.fa-white {
+  color: $white;
+  text-shadow: none;
 }

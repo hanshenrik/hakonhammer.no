@@ -1,76 +1,31 @@
+@import 'variables';
 @import 'utils';
 
-/* Fonts */
-$heading-font: 'Monofett';
-$body-font: 'Lato';
-$title-font: 'Megrim';
-
-/* Colors */
-$white: #fdfdfd;
-$black: #2d2d2d;
-$purple-darker: #130027;
-$purple-dark: #130027;
-$purple: #3f0a65;
-$purple-light: #a06fc3;
-$purple-lighter: #e5c5fd;
-$gray-dark: #bbb;
-$gray-light: #ddd;
-
-/* Timing */
-$fast: 0.2s;
-$medium-speed: 0.4s;
-$slow: 0.6s;
-
-/* Spacing */
-$default-padding: 16px;
-$main-content-width: 1920px;
-
-$category-item-height: 400px;
-
 /* Backgrounds */
-#conductor-background { background-image: url(../images/conductor.jpg) }
-#saxophonist-background { background-image: url(../images/saxophonist.jpg) }
-#music-educator-background { background-image: url(../images/music-educator.jpg) }
-#master-thesis-background { background-image: url(../images/master-thesis.jpg) }
+#conductor-background {
+  background-image: url(../images/conductor.jpg);
+  background-position: left center;
+}
+#saxophonist-background {
+  background-image: url(../images/master-thesis.jpg);
+}
+#music-educator-background {
+  background-image: url(../images/music-educator.jpg);
+  background-position: right top;
+}
+#master-thesis-background {
+  background-image: url(../images/master-thesis2.jpg);
+}
 
 .image-attribution {
   position: absolute;
   bottom: 0;
   right: 0;
   padding: $default-padding;
-  // background-color: rgba(0, 0, 0, 0.2);
   font-size: 11px;
   color: $gray-dark;
 }
 
-.center {
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  @include flexbox();
-  justify-content: center;
-  align-items: center;
-  > * {
-    // max-width: 100%;
-  }
-  background-color: black;
-  border-radius: 50%;
-  z-index: 30;
-  top: 50%;
-  left: 50%;
-  box-shadow: 0 0 50px 30px rgba(0, 0, 0, 1);
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
-.title {
-  text-align: center;
-  color: $white;
-  font-family: $title-font;
-  font-size: 36px;
-}
-
-
-/* General (mobile first) */
 html, body, main, #categories, .category-grid {
   height: 100%;
 }
@@ -87,11 +42,11 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .category-title {
   font-family: $heading-font;
   font-weight: 300;
   font-size: 28px;
-  text-shadow: $purple-darker 2px 1px 1px;
+  text-shadow: $purple-darker 2px 2px 0px;
 }
 
 a {
@@ -100,44 +55,110 @@ a {
   @include transition(color);
 
   &:hover {
-    color: $purple;
+    color: $purple-lighter;
+  }
+}
+
+header {
+  position: fixed;
+  width: 100%;
+
+  z-index: 30;
+  
+  @include flexbox();
+  
+  // Center the children
+  justify-content: center;
+  align-items: center;
+  
+  background-color: rgba(0, 0, 0, 0.5);
+  @include box-shadow($color: rgba(0, 0, 0, 0.5));
+  
+  @media (min-width: 768px) {
+    position: absolute;
+    width: 30%;
+    
+    background-color: transparent;
+    @include box-shadow($none: true);
+    
+    // Center the container
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .title {
+    text-align: center;
+    color: $white;
+    font-size: 30px;
+    @media (min-width: 768px) {
+      font-size: 58px;
+    }
+    font-family: $title-font;
+    text-shadow: black 2px 2px 0px;
+    
+  }
+
+  .contact-item {
+    @media (min-width: 768px) {
+      padding: 0 $default-padding;
+      font-size: 1.6em;
+    }
+    
+    padding: $default-padding/2;
+    
+    font-size: 1.2em;
+    font-weight: 400;
+    text-shadow: $purple-darker 2px 2px 0px;
+    @include transition(all);
+
+    .contact-icon {
+      color: $purple;
+      &:hover {
+        color: $purple-light;
+      }
+    }
+    
+    // &:hover {
+    //   @include scale(1.03);
+    // }
   }
 }
 
 footer {
-  position: fixed;
   font-size: 0.8em;
   @media (min-width: 768px) {
+    position: fixed;
     font-size: 0.9em;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
-  bottom: 0;
-  right: 0;
-  left: 0;
   z-index: 10;
   padding: 8px;
   text-align: center;
   // background-color: rgba(192, 151, 222, 0.07);
   background-color: rgba(0, 0, 0, 0.7);
+  // @include box-shadow();
   color: $gray-dark;
 
   #info-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    // @media (min-width: 768px) {
+    @media (min-width: 768px) {
       li {
         display: inline-block;
         &:not(:last-child):after { content: ' \00b7'; }
       }
     }
-  // }
+  }
 }
 
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
-  // flex-direction: column;
-  // height: 100vh;
 
   .category-item-wrapper {
     height: 100%;
@@ -147,7 +168,7 @@ footer {
       flex-basis: 50%;
     }
 
-    @include transition(all, $slow);
+    @include transition($duration: $slow);
 
     .category-item {
       position: relative;
@@ -157,25 +178,20 @@ footer {
       @include flexbox();
       justify-content: center;
 
+      cursor: pointer;
+
       // @include box-shadow(0px, 0px, 10px, 1px, rgba(255,255,255,0.2));
       // @include border-radius();
       z-index: 2; /* To avoid border-radius disappearing during transition */
 
-      &.open {
-        background-color: rgba(0, 0, 0, 0.4);
-        .category-content {
-          .read-more-icon {
-            // @include rotate(180deg);
-          }
-          .category-text {
-            // max-height: $category-item-height;
-          }
+      &:hover {
+        .category-background {
+          @include scale(1.1);
         }
       }
-
       .category-background {
         position: absolute;
-            box-shadow: 0 0 50px 30px rgba(0, 0, 0, 1) inset;
+        // @include box-shadow($blur: 10px, $spread: 5px, $inset: true);
         top: 0;
         left: 0;
         z-index: 0;
@@ -184,112 +200,86 @@ footer {
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        @include grayscale(60%);
+        // @include grayscale(60%);
         @include transition(all, 1s);
       }
 
       .category-content {
-        // @media (min-width: 768px) {
-        //   opacity: 0;
-        // }
-
-        &:hover {
-          .read-more-icon {
-            color: $purple-lighter;
-          }
-        }
-        @include transition(opacity, $slow);
-        z-index: 1;
-        text-align: center;
-        // background-color: rgba(0, 0, 0, 0.4);
-        // width: 100%;
+        width: 100%;
+        height: 100%;
         padding: $default-padding;
+        z-index: 1;
+
+        @include flexbox();
+        flex-direction: column;
+
+        // Center myself
+        align-self: center;
+
+        // Center the children
+        justify-content: center;
+        align-items: center;
+
+        @include transition(all, $slow);
         @include border-radius();
         color: $white;
-        align-self: center;
-        // cursor: pointer;
 
-        .read-more-icon {
-          display: none;
-          margin-left: 0.5em;
-          @include transition(all, $medium-speed);
+        // background-color: rgba(0, 0, 0, 0.4);
+
+        .category-title {
+          padding: $default-padding;
+          // The read-more-icon needs padding on both sides because it is transformed up-side-down.
+          // To avoid too much space on the right, we remove this padding.
+          padding-right: 0;
+          // @include border-radius();
+          text-align: center;
+
+          @include transition($duration: $slow);
+
+          background-color: rgba(0, 0, 0, 0.5);
+          // @include box-shadow($color: rgba(0, 0, 0, 0.5));
         }
 
         .category-text {
-          display: none;
-          background-color: rgba(0, 0, 0, 0.666);
-          padding: $default-padding;
-          @include border-radius();
           text-align: left;
-          a {
-            &:hover {
-              color: $purple-lighter;
+          display: none;
+        }
+
+        &.open {
+          background-color: rgba(0, 0, 0, 0.666);
+          .category-title {
+            background-color: transparent;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .category-title {
+            // Centering
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+          }
+
+          &.open {            
+            .category-title {
+              @include box-shadow($none: true);
+
+              // Remove centering when open
+              top: $default-padding*3;
+              left: $default-padding*2;
+              transform: none;
             }
           }
         }
       }
-
-      &:hover {
-        // .category-content {
-        //   @media (min-width: 768px) {
-        //     opacity: 1;
-        //   }
-        // }
-        // @include border-radius();
-
-        .category-background {
-          @include scale(1.05);
-          @include grayscale(0);
-        }
-      }
     }
   }
 }
 
-.contact-info {
-  position: fixed;
-  padding: $default-padding;
-  top: 0;
-  right: 0;
-  left: 0;
-  text-shadow: $purple-darker 1px 1px 1px;
-  font-weight: 400;
-  // background-color: rgba(255, 255, 255, 0.8);
-  // @include box-shadow(0px, 0px, 5px, 0px, #cfc8d4);
-  z-index: 99;
-  // border-top: 1px dashed $purple;
-  @include flexbox();
-  justify-content: center;
-  flex-wrap: wrap;
-  // justify-content: space-around;
-  justify-content: flex-end;
-  font-size: 1.2em;
-
-  
-  @media (min-width: 768px) {
-  }
-
-  .contact-item {
-    padding: 0 $default-padding;
-    @include transition(all);
-    &:hover {
-      @include scale(1.03);
-    }
-
-    .contact-item-text {
-      display: none;
-      @media (min-width: 768px) {
-        display: inline-block;
-      }
-    }
-  }
-}
-
-.fa-purple {
-  color: #3f0a65;
-  text-shadow: none;
-}
-.fa-white {
-  color: $white;
-  text-shadow: none;
+.read-more-icon {
+  font-size: 0.7em;
+  margin: 0 $default-padding;
+  @include transition();
 }
