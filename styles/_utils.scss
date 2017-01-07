@@ -41,30 +41,10 @@
           filter: grayscale($amount);
 }
 
-@mixin box-shadow($left, $top, $blur, $spread, $color, $inset: false) {
-  @if $inset {
-    -webkit-box-shadow:inset $left $top $blur $spread $color;
-    -moz-box-shadow:inset $left $top $blur $spread $color;
-    box-shadow:inset $left $top $blur $spread $color;
-  } @else {
-    -webkit-box-shadow: $left $top $blur $spread $color;
-    -moz-box-shadow: $left $top $blur $spread $color;
-    box-shadow: $left $top $blur $spread $color;
-  }
-}
-
 @mixin text-shadow($offset-x, $offset-y, $blur, $color) {
   -webkit-text-shadow: $offset-x $offset-y $blur $color;
   -moz-text-shadow: $offset-x $offset-y $blur $color;
   text-shadow: $offset-x $offset-y $blur $color;
-}
-
-@mixin flexbox() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
 }
 
 @mixin box-shadow($top: 0, $left: 0, $blur: 2px, $spread: 1px, $color: black, $inset: false, $none: false) {
@@ -81,6 +61,14 @@
     -moz-box-shadow: $top $left $blur $spread $color;
     box-shadow: $top $left $blur $spread $color;
   }
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
 }
 
 /* Utility classes */
