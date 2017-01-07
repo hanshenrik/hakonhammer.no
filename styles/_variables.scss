@@ -11,6 +11,7 @@ $purple-dark: #130027;
 $purple: #6e3d92;
 $purple-light: #a06fc3;
 $purple-lighter: #e5c5fd;
+$gray-darker: #222;
 $gray-dark: #bbb;
 $gray-light: #ddd;
 
@@ -21,3 +22,7 @@ $slow: 0.6s;
 
 /* Spacing */
 $default-padding: 16px;
+
+/* Backgrounds */
+$black-transparent-slight: rgba(0, 0, 0, 0.4);
+$black-transparent: rgba(0, 0, 0, 0.6);

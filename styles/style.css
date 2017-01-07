@@ -2,6 +2,7 @@
 /* Colors */
 /* Timing */
 /* Spacing */
+/* Backgrounds */
 /* Mixins */
 /* Utility classes */
 .portrait {
@@ -57,7 +58,7 @@ h1, h2, h3, h4, h5, h6, .category-title {
   font-family: "Lato";
   font-weight: 300;
   font-size: 28px;
-  text-shadow: #130027 2px 2px 0px; }
+  text-shadow: #2d2d2d 2px 2px 1px; }
 
 a {
   color: #a06fc3;
@@ -80,10 +81,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4); }
   @media (min-width: 768px) {
     header {
       position: absolute;
@@ -101,7 +102,7 @@ header {
     color: #fdfdfd;
     font-size: 30px;
     font-family: "Megrim";
-    text-shadow: black 2px 2px 0px; }
+    text-shadow: #2d2d2d 2px 2px 1px; }
     @media (min-width: 768px) {
       header .title {
         font-size: 58px; } }
@@ -109,7 +110,7 @@ header {
     padding: 8px;
     font-size: 1.2em;
     font-weight: 400;
-    text-shadow: #130027 2px 2px 0px;
+    text-shadow: #130027 1px 2px 1px;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
@@ -124,14 +125,18 @@ header {
         color: #a06fc3; }
 
 footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   font-size: 0.8em;
   z-index: 10;
   padding: 8px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #bbb; }
+  color: #222; }
   @media (min-width: 768px) {
     footer {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #ddd;
       position: fixed;
       font-size: 0.9em;
       bottom: 0;
@@ -179,11 +184,11 @@ footer {
       z-index: 2;
       /* To avoid border-radius disappearing during transition */ }
       .category-grid .category-item-wrapper .category-item:hover .category-background {
-        -webkit-transform: scale(1.1);
+        -webkit-transform: scale(1.04);
         /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-        -ms-transform: scale(1.1);
+        -ms-transform: scale(1.04);
         /* IE 9 */
-        transform: scale(1.1);
+        transform: scale(1.04);
         /* IE 10, Fx 16+, Op 12.1+ */ }
       .category-grid .category-item-wrapper .category-item .category-background {
         position: absolute;
@@ -213,14 +218,10 @@ footer {
         align-self: center;
         justify-content: center;
         align-items: center;
-        -webkit-transition: all 0.6s ease-in-out;
-        -moz-transition: all 0.6s ease-in-out;
-        -ms-transition: all 0.6s ease-in-out;
-        transition: all 0.6s ease-in-out;
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        -ms-border-radius: 6px;
-        border-radius: 6px;
+        -webkit-transition: 0.6s 0.2s ease-in-out;
+        -moz-transition: 0.6s 0.2s ease-in-out;
+        -ms-transition: 0.6s 0.2s ease-in-out;
+        transition: 0.6s 0.2s ease-in-out;
         color: #fdfdfd; }
         .category-grid .category-item-wrapper .category-item .category-content .category-title {
           padding: 16px;
@@ -230,12 +231,12 @@ footer {
           -moz-transition: all 0.6s ease-in-out;
           -ms-transition: all 0.6s ease-in-out;
           transition: all 0.6s ease-in-out;
-          background-color: rgba(0, 0, 0, 0.5); }
+          background-color: rgba(0, 0, 0, 0.4); }
         .category-grid .category-item-wrapper .category-item .category-content .category-text {
           text-align: left;
           display: none; }
         .category-grid .category-item-wrapper .category-item .category-content.open {
-          background-color: rgba(0, 0, 0, 0.666); }
+          background-color: rgba(0, 0, 0, 0.6); }
           .category-grid .category-item-wrapper .category-item .category-content.open .category-title {
             background-color: transparent; }
         @media (min-width: 768px) {
@@ -250,8 +251,7 @@ footer {
             -moz-box-shadow: none;
             box-shadow: none;
             top: 48px;
-            left: 32px;
-            transform: none; } }
+            transform-top: none; } }
 
 .read-more-icon {
   font-size: 0.7em;
