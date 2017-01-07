@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6, .category-title {
   font-family: $heading-font;
   font-weight: 300;
   font-size: 28px;
-  text-shadow: $black 2px 2px 1px;
+  text-shadow: $black 1px 2px 1px;
 }
 
 a {
@@ -93,7 +93,7 @@ header {
     color: $white;
     font-size: 30px;
     @media (min-width: 768px) {
-      font-size: 58px;
+      font-size: 48px;
     }
     font-family: $title-font;
     text-shadow: $black 2px 2px 1px;
@@ -101,17 +101,17 @@ header {
   }
 
   .contact-item {
-    @media (min-width: 768px) {
-      padding: 0 $default-padding;
-      font-size: 1.6em;
-    }
-    
     padding: $default-padding/2;
     
     font-size: 1.2em;
     font-weight: 400;
-    text-shadow: $purple-darker 1px 2px 1px;
+    text-shadow: $purple-dark 1px 2px 1px;
     @include transition(all);
+
+    @media (min-width: 768px) {
+      padding: 0 $default-padding;
+      font-size: 1.4em;
+    }
 
     .contact-icon {
       color: $purple;
@@ -135,7 +135,7 @@ footer {
   padding: 8px;
   text-align: center;
   // @include box-shadow();
-  color: $gray-darker;
+  color: $black;
 
   @media (min-width: 768px) {
     background-color: $black-transparent-slight;
@@ -223,7 +223,7 @@ footer {
         justify-content: center;
         align-items: center;
 
-        @include transition($slow);
+        @include transition($duration: $slow);
         color: $white;
 
         .category-title {
@@ -246,32 +246,10 @@ footer {
         }
 
         &.open {
-          background-color: $black-transparent;
+          background-color: $black-transparent-heavy;
           .category-title {
             // padding: 0;
             background-color: transparent;
-          }
-        }
-
-        @media (min-width: 768px) {
-          .category-title {
-            // Centering
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
-          }
-
-          &.open {            
-            .category-title {
-              @include box-shadow($none: true);
-
-              // Remove centering when open
-              top: $default-padding*3;
-              // left: $default-padding*2;
-              transform-top: none;
-            }
           }
         }
       }

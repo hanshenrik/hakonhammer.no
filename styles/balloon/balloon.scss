@@ -3,7 +3,7 @@
 // -----------------------------------------
 
 $balloon-bg:             fade-out(#111, .1);
-$balloon-base-size:      18px;
+$balloon-base-size:      20px;
 $balloon-arrow-height:   0px;
 
 
@@ -89,7 +89,7 @@ button[data-balloon] {
 
         // background: $balloon-bg;
         border-radius: 4px;
-        color: #a06fc3;
+        color: #ae95bf;
         content: attr(data-balloon);
         font-size: $balloon-base-size + 2;
         padding: .5em 1em;
