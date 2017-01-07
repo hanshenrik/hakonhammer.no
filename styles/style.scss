@@ -132,19 +132,21 @@ footer {
   width: 100%;
   font-size: 0.8em;
   z-index: 10;
-  padding: 8px;
+  padding: $default-padding;
   text-align: center;
-  // @include box-shadow();
-  color: $black;
+  color: $black-dark;
 
   @media (min-width: 768px) {
     background-color: $black-transparent-slight;
+    // @include box-shadow($color: $black-transparent-slight);
+
     color: $gray-light;
     position: fixed;
     font-size: 0.9em;
     bottom: 0;
     right: 0;
     left: 0;
+    padding: $default-padding/4;
   }
 
   #info-list {
@@ -184,7 +186,6 @@ footer {
 
       cursor: pointer;
 
-      // @include border-radius();
       z-index: 2; /* To avoid border-radius disappearing during transition */
 
       &:hover {
@@ -194,7 +195,7 @@ footer {
       }
       .category-background {
         position: absolute;
-        // @include box-shadow($blur: 10px, $spread: 5px, $inset: true);
+        // @include box-shadow($blur: 20px, $spread: 10px, $inset: true);
         top: 0;
         left: 0;
         z-index: 0;
@@ -250,6 +251,7 @@ footer {
           .category-title {
             // padding: 0;
             background-color: transparent;
+            @include box-shadow($none: true);
           }
         }
       }
