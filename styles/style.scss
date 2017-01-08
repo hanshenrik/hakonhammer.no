@@ -1,5 +1,7 @@
+/* Imports */
 @import 'variables';
 @import 'utils';
+
 
 /* Backgrounds */
 #conductor-background {
@@ -26,6 +28,7 @@
   color: $gray-dark;
 }
 
+/* General stuff */
 html, body, main, #categories, .category-grid {
   height: 100%;
 }
@@ -52,13 +55,15 @@ h1, h2, h3, h4, h5, h6, .category-title {
 a {
   color: $purple-light;
   text-decoration: none;
-  @include transition(color);
+  @include transition($property: color);
 
   &:hover {
     color: $purple-lighter;
   }
 }
 
+
+/* Header and footer */
 header {
   position: fixed;
   width: 100%;
@@ -71,8 +76,8 @@ header {
   justify-content: center;
   align-items: center;
   
-  background-color: $black-transparent-slight;
-  @include box-shadow($color: $black-transparent-slight);
+  background-color: $black-transparent;
+  @include box-shadow($color: $black-transparent);
   
   @media (min-width: 768px) {
     position: absolute;
@@ -109,7 +114,7 @@ header {
     font-size: 0.9em;
     font-weight: 400;
     text-shadow: $purple-dark 1px 2px 1px;
-    @include transition(all);
+    @include transition();
     order: 2;
 
     @media (min-width: 768px) {
@@ -142,8 +147,8 @@ footer {
   color: $black-dark;
 
   @media (min-width: 768px) {
-    background-color: $black-transparent-slight;
-    // @include box-shadow($color: $black-transparent-slight);
+    background-color: $black-transparent;
+    // @include box-shadow($color: $black-transparent);
 
     color: $gray-light;
     position: fixed;
@@ -167,23 +172,24 @@ footer {
   }
 }
 
+
+/* Main content */
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
 
   * {
-    @include no-select();
+    @include no-select-highlight();
   }
 
   .category-item-wrapper {
     height: 100%;
     flex-basis: 100%;
+
     @media (min-width: 768px) {
       height: 50%;
       flex-basis: 50%;
     }
-
-    @include transition($duration: $slow);
 
     .category-item {
       position: relative;
@@ -199,9 +205,10 @@ footer {
 
       &:hover {
         .category-background {
-          @include scale(1.04);
+          @include scale(1.03);
         }
       }
+
       .category-background {
         position: absolute;
         // @include box-shadow($blur: 20px, $spread: 10px, $inset: true);
@@ -214,7 +221,7 @@ footer {
         background-position: center center;
         background-repeat: no-repeat;
         // @include grayscale(60%);
-        @include transition(all, 1s);
+        @include transition($duration: $slow);
       }
 
       .category-content {
@@ -236,6 +243,15 @@ footer {
         @include transition($duration: $slow);
         color: $white;
 
+        &.open {
+          background-color: $black-transparent-heavy;
+          .category-title {
+            // padding: 0;
+            background-color: transparent;
+            @include box-shadow($none: true);
+          }
+        }
+
         .category-title {
           padding: $default-padding;
           // The read-more-icon needs padding on both sides because it is transformed up-side-down.
@@ -246,22 +262,13 @@ footer {
 
           @include transition($duration: $slow);
 
-          background-color: $black-transparent-slight;
-          // @include box-shadow($color: $black-transparent-slight);
+          background-color: $black-transparent;
+          // @include box-shadow($color: $black-transparent);
         }
 
         .category-text {
           text-align: left;
           display: none;
-        }
-
-        &.open {
-          background-color: $black-transparent-heavy;
-          .category-title {
-            // padding: 0;
-            background-color: transparent;
-            @include box-shadow($none: true);
-          }
         }
       }
     }

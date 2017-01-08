@@ -71,7 +71,7 @@
   display: flex;
 }
 
-@mixin no-select() {
+@mixin no-select-highlight() {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
