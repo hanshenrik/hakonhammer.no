@@ -91,24 +91,29 @@ header {
   .title {
     text-align: center;
     color: $white;
-    font-size: 30px;
-    @media (min-width: 768px) {
-      font-size: 48px;
-    }
+    font-size: 1.5em;
     font-family: $title-font;
     text-shadow: $black 2px 2px 1px;
-    
+
+    order: 1;
+
+    @media (min-width: 768px) {
+      order: 0;
+      font-size: 3em;
+    }
   }
 
   .contact-item {
     padding: $default-padding/2;
     
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-weight: 400;
     text-shadow: $purple-dark 1px 2px 1px;
     @include transition(all);
+    order: 2;
 
     @media (min-width: 768px) {
+      order: 0;
       padding: 0 $default-padding;
       font-size: 1.4em;
     }
@@ -165,6 +170,10 @@ footer {
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
+
+  * {
+    @include no-select();
+  }
 
   .category-item-wrapper {
     height: 100%;
