@@ -16,16 +16,29 @@
   background-position: right top;
 }
 #master-thesis-background {
-  background-image: url(../images/master-thesis2.jpg);
+  background-image: url(../images/shop3.jpg);
 }
 
 .image-attribution {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: $default-padding;
-  font-size: 11px;
+  padding: $default-padding/2;
+  font-size: 10px;
   color: $gray-dark;
+  &.left {
+    left: 0;
+    right: auto;
+  }
+  &.right {
+    left: auto;
+    right: 0;
+  }
+  @media (min-width: $screen-small) {
+    &.double-padding-bottom {
+      padding-bottom: 2*$default-padding;
+    }
+  }
 }
 
 /* General stuff */
@@ -49,7 +62,7 @@ h1, h2, h3, h4, h5, h6, .category-title {
   font-family: $heading-font;
   font-weight: 300;
   font-size: 28px;
-  text-shadow: $black 1px 2px 1px;
+  @include text-shadow($black, 1px, 2px, 1px);
 }
 
 a {
@@ -94,33 +107,49 @@ header {
   }
 
   .title {
-    text-align: center;
+    padding: $default-padding/2 $default-padding;
+    text-align: left;
     color: $white;
     font-size: 1.5em;
     font-family: $title-font;
-    text-shadow: $black 2px 2px 1px;
+    @include text-shadow($black, 2px, 2px, 1px);
 
     order: 1;
 
+    .category-list {
+      font-size: 12px;
+      font-family: $body-font;
+    }
+
     @media (min-width: $screen-small) {
+      text-align: center;
       order: 0;
-      font-size: 3em;
+      font-size: 4.5em;
+
+      .category-list {
+        display: none;
+      }
     }
   }
 
   .contact-item {
     padding: $default-padding/2;
+    opacity: 0;
     
     font-size: 0.9em;
     font-weight: 400;
-    text-shadow: $purple-dark 1px 2px 1px;
-    @include transition();
+    @include text-shadow($purple-dark, 1px, 1px, 1px);
+    @include transition(transform);
     order: 2;
 
     @media (min-width: $screen-small) {
       order: 0;
       padding: 0 $default-padding;
-      font-size: 1.4em;
+      font-size: 2em;
+      
+      &:hover {
+        @include scale(1.03);
+      }
     }
 
     .contact-icon {
@@ -129,10 +158,6 @@ header {
         color: $purple-light;
       }
     }
-    
-    // &:hover {
-    //   @include scale(1.03);
-    // }
   }
 }
 
@@ -199,13 +224,26 @@ footer {
       @include flexbox();
       justify-content: center;
 
-      cursor: pointer;
-
       z-index: 2; /* To avoid border-radius disappearing during transition */
 
-      &:hover {
-        .category-background {
-          @include scale(1.03);
+      @media (min-width: $screen-small) {
+        &:hover {
+          .category-background {
+            @include scale(1.03);
+          }
+        }
+      }
+
+      &.open {
+        .category-content {
+          background-color: $black-transparent-heavy;
+          cursor: default;
+
+          .category-title {
+            // padding: 0;
+            background-color: transparent;
+            @include box-shadow($none: true);
+          }
         }
       }
 
@@ -243,20 +281,13 @@ footer {
         @include transition($duration: $slow);
         color: $white;
 
+        cursor: pointer;
+
         @media (min-width: $screen-small) {
           padding: 2*$default-padding;
         }
         @media (min-width: $screen-medium) {
           padding: 4*$default-padding;
-        }
-
-        &.open {
-          background-color: $black-transparent-heavy;
-          .category-title {
-            // padding: 0;
-            background-color: transparent;
-            @include box-shadow($none: true);
-          }
         }
 
         .category-title {
@@ -270,7 +301,7 @@ footer {
           @include transition($duration: $slow);
 
           background-color: $black-transparent;
-          // @include box-shadow($color: $black-transparent);
+          // @include box-shadow($color: $black-transparent, $left: 1px, $top: 1px);
         }
 
         .category-text {
@@ -283,6 +314,7 @@ footer {
 }
 
 .read-more-icon {
+  cursor: pointer;
   font-size: 0.7em;
   margin: 0 $default-padding;
   @include transition();
