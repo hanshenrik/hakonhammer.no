@@ -79,7 +79,7 @@ header {
   background-color: $black-transparent;
   @include box-shadow($color: $black-transparent);
   
-  @media (min-width: 768px) {
+  @media (min-width: $screen-small) {
     position: absolute;
     width: 30%;
     
@@ -102,7 +102,7 @@ header {
 
     order: 1;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-small) {
       order: 0;
       font-size: 3em;
     }
@@ -117,7 +117,7 @@ header {
     @include transition();
     order: 2;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-small) {
       order: 0;
       padding: 0 $default-padding;
       font-size: 1.4em;
@@ -146,7 +146,7 @@ footer {
   text-align: center;
   color: $black-dark;
 
-  @media (min-width: 768px) {
+  @media (min-width: $screen-small) {
     background-color: $black-transparent;
     // @include box-shadow($color: $black-transparent);
 
@@ -163,7 +163,7 @@ footer {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    @media (min-width: 768px) {
+    @media (min-width: $screen-small) {
       li {
         display: inline-block;
         &:not(:last-child):after { content: ' \00b7'; }
@@ -186,7 +186,7 @@ footer {
     height: 100%;
     flex-basis: 100%;
 
-    @media (min-width: 768px) {
+    @media (min-width: $screen-small) {
       height: 50%;
       flex-basis: 50%;
     }
@@ -242,6 +242,13 @@ footer {
 
         @include transition($duration: $slow);
         color: $white;
+
+        @media (min-width: $screen-small) {
+          padding: 2*$default-padding;
+        }
+        @media (min-width: $screen-medium) {
+          padding: 4*$default-padding;
+        }
 
         &.open {
           background-color: $black-transparent-heavy;
