@@ -9,14 +9,14 @@
   background-position: left center;
 }
 #saxophonist-background {
-  background-image: url(../images/master-thesis.jpg);
+  background-image: url(../images/saxophonist.jpg);
 }
 #music-educator-background {
   background-image: url(../images/music-educator.jpg);
   background-position: right top;
 }
 #master-thesis-background {
-  background-image: url(../images/shop3.jpg);
+  background-image: url(../images/shop.jpg);
 }
 
 .image-attribution {
@@ -42,8 +42,12 @@
 }
 
 /* General stuff */
-html, body, main, #categories, .category-grid {
+html, body, main, #categories, .category-grid, #wrapper {
   height: 100%;
+}
+
+#wrapper {
+  display: none;
 }
 
 html {

@@ -1,4 +1,4 @@
-var animationDuration = 500;
+var animationDuration = 1000;
 var fadeInDelay = animationDuration;
 var openFirstCategoryDelay = 2*fadeInDelay;
 
@@ -9,8 +9,12 @@ jQuery.fn.extend({
 });
 
 $( document ).ready( function() {
-  // Set copyright year to current year
-  $( '#current-year' ).text( (new Date).getFullYear() );
+  // Fade in the whole shebang after the DOM is ready
+  $( '#wrapper ').fadeIn( animationDuration, function() {
+    setTimeout( function() {
+      $( '.category-item' ).first().click();
+    }, openFirstCategoryDelay);
+  });
 
   $( '.category-item' ).click( function( e ) {
     $( this ).toggleClass( 'open closed' );
@@ -18,9 +22,8 @@ $( document ).ready( function() {
     $( this ).find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle' );
   });
 
-  setTimeout( function() {
-    $( '.category-item' ).first().click();
-  }, openFirstCategoryDelay);
+  // Set copyright year to current year
+  $( '#current-year' ).text( (new Date).getFullYear() );
 })
 
 // $(window).on( 'load' , function() {
