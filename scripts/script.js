@@ -1,6 +1,5 @@
-var animationDuration = 1000;
+var animationDuration = 800;
 var fadeInDelay = animationDuration;
-var openFirstCategoryDelay = 2*fadeInDelay;
 
 jQuery.fn.extend({
   fadeInOpacity: function() {
@@ -11,9 +10,20 @@ jQuery.fn.extend({
 $( document ).ready( function() {
   // Fade in the whole shebang after the DOM is ready
   $( '#wrapper ').fadeIn( animationDuration, function() {
+
+    var numberOfContactItems = 0;
+    $( '.contact-item' ).each( function( i ) {
+      var item = $( this );
+      setTimeout( function() {
+        console.log(i)
+        item.fadeInOpacity();
+      }, i * fadeInDelay);
+      numberOfContactItems += 1;
+    });
+
     setTimeout( function() {
       $( '.category-item' ).first().click();
-    }, openFirstCategoryDelay);
+    }, numberOfContactItems * fadeInDelay);
   });
 
   $( '.category-item' ).click( function( e ) {
@@ -25,13 +35,3 @@ $( document ).ready( function() {
   // Set copyright year to current year
   $( '#current-year' ).text( (new Date).getFullYear() );
 })
-
-// $(window).on( 'load' , function() {
-//   $( '.contact-item' ).each( function( i ) {
-//     var item = $( this );
-//     setTimeout( function() {
-//       console.log(i)
-//       item.fadeInOpacity();
-//     }, i * fadeInDelay);
-//   });
-// });
