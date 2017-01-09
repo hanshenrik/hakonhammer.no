@@ -226,6 +226,7 @@ footer {
       z-index: 2; /* To avoid border-radius disappearing during transition */
 
       @media (min-width: $screen-small) {
+        -webkit-transform: translateZ(0);
         &:hover {
           .category-background {
             @include scale(1.03);
