@@ -1,4 +1,4 @@
-var animationDuration = 800;
+var animationDuration = 1800;
 var fadeInDelay = animationDuration;
 
 jQuery.fn.extend({
@@ -24,12 +24,17 @@ $( document ).ready( function() {
     setTimeout( function() {
       $( '.category-item' ).first().click();
     }, numberOfContactItems * fadeInDelay);
+
+    setTimeout( function() {
+      $( '.scroll-down-icon' ).addClass('animated fadeInDown');
+    }, numberOfContactItems * fadeInDelay + 5000);
   });
 
-  $( '.category-item' ).click( function( e ) {
-    $( this ).toggleClass( 'open closed' );
-    $( this ).find( '.category-text' ).stop().slideToggle();
-    $( this ).find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle' );
+  $('.category-grid').on('click', '.category-item.closed, .read-more-icon.open', function( e ) {
+    var $categoryItem = $(this).closest('.category-item');
+    $categoryItem.toggleClass( 'open closed' );
+    $categoryItem.find( '.category-text' ).stop().slideToggle();
+    $categoryItem.find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle open closed' );
   });
 
   // Set copyright year to current year

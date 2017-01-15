@@ -16,7 +16,12 @@
   background-position: right top;
 }
 #master-thesis-background {
-  background-image: url(../images/shop.jpg);
+  background-image: url(../images/master-thesis.jpg);
+  @include grayscale(0.6);
+  // filter: sepia(0.5);
+  @media (min-width: $screen-small) {
+    background-position: right top;
+  }
 }
 
 .image-attribution {
@@ -24,8 +29,10 @@
   bottom: 0;
   right: 0;
   padding: $default-padding/2;
-  font-size: 10px;
-  color: $gray-light;
+  font-size: 11px;
+  color: $gray-dark;
+  cursor: auto;
+  z-index: 2;
   &.left {
     left: 0;
     right: auto;
@@ -76,7 +83,7 @@ a {
 
 
 /* Header and footer */
-header {
+.header {
   position: fixed;
   width: 100%;
 
@@ -93,7 +100,6 @@ header {
   
   @media (min-width: $screen-small) {
     position: absolute;
-    width: 30%;
     
     background-color: transparent;
     @include box-shadow($none: true);
@@ -120,7 +126,16 @@ header {
       font-family: $body-font;
     }
 
+    .title-break {
+      display: inline;
+      // padding-right: 1em;
+    }
+
     @media (min-width: $screen-small) {
+      .title-break {
+        display: block;
+      }
+
       text-align: center;
       order: 0;
       font-size: 4.5em;
@@ -143,8 +158,8 @@ header {
 
     @media (min-width: $screen-small) {
       order: 0;
-      padding: 0 $default-padding;
-      font-size: 2em;
+      padding: 0;
+      font-size: 1.6em;
       
       &:hover {
         @include scale(1.03);
@@ -160,38 +175,38 @@ header {
   }
 }
 
-footer {
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  font-size: 0.8em;
+  font-size: 11px;
   z-index: 10;
-  padding: $default-padding;
-  text-align: center;
-  color: $black-dark;
+  text-align: right;
+  color: $gray-light;
 
   @media (min-width: $screen-small) {
-    background-color: $black-transparent;
+    // text-align: center;
+    // background-color: $black-transparent;
     // @include box-shadow($color: $black-transparent);
 
-    color: $gray-light;
     // position: fixed;
-    font-size: 0.9em;
+    // font-size: 0.9em;
     bottom: 0;
     right: 0;
     left: 0;
-    padding: $default-padding/4;
   }
 
   #info-list {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: $default-padding;
+
     @media (min-width: $screen-small) {
-      li {
-        display: inline-block;
-        &:not(:last-child):after { content: ' \00b7'; }
-      }
+      padding: $default-padding/4;
+      // li {
+      //   display: inline-block;
+      //   &:not(:last-child):after { content: ' \00b7'; }
+      // }
     }
   }
 }
@@ -201,10 +216,6 @@ footer {
 .category-grid {
   @include flexbox();
   flex-wrap: wrap;
-
-  * {
-    @include no-select-highlight();
-  }
 
   .category-item-wrapper {
     height: 100%;
@@ -216,6 +227,7 @@ footer {
     }
 
     .category-item {
+      @include select-highlight(false);
       position: relative;
       overflow: hidden;
       height: 100%;
@@ -305,17 +317,40 @@ footer {
         }
 
         .category-text {
-          text-align: left;
           display: none;
+          text-align: left;
+          cursor: auto;
+          @include select-highlight(true);
         }
       }
     }
   }
 }
 
+.scroll-down-icon {
+  position: absolute;
+  display: block;
+  text-align: center;
+  bottom: 0;
+  font-size: 2em;
+  width: 100%;
+  z-index: 11;
+  color: white;
+  padding: $default-padding;
+  @media (min-width: $screen-small) {
+    display: none;
+  }
+}
+
 .read-more-icon {
+  margin: 0 $default-padding;
   cursor: pointer;
   font-size: 0.7em;
-  margin: 0 $default-padding;
+  vertical-align: middle;
+
   @include transition();
+
+  &:hover {
+    color: $purple-lighter;
+  }
 }
