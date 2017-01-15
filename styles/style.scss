@@ -332,8 +332,9 @@ a {
   display: block;
   text-align: center;
   bottom: 0;
+  left: 0;
+  right: 0;
   font-size: 2em;
-  width: 100%;
   z-index: 11;
   color: white;
   padding: $default-padding;
