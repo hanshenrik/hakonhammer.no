@@ -25,7 +25,7 @@ $( document ).ready( function() {
     }, numberOfContactItems * fadeInDelay);
 
     setTimeout( function() {
-      $( '.scroll-down-icon > .fa' ).addClass('animated swing');
+      $( '.scroll-down-icon > .fa' ).addClass('animated fadeInDown');
     }, numberOfContactItems * fadeInDelay + 5000);
   });
 
