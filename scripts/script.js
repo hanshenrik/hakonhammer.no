@@ -15,7 +15,6 @@ $( document ).ready( function() {
     $( '.contact-item' ).each( function( i ) {
       var item = $( this );
       setTimeout( function() {
-        console.log(i)
         item.fadeInOpacity();
       }, i * fadeInDelay);
       numberOfContactItems += 1;
@@ -26,17 +25,22 @@ $( document ).ready( function() {
     }, numberOfContactItems * fadeInDelay);
 
     setTimeout( function() {
-      $( '.scroll-down-icon' ).addClass('animated fadeInDown');
+      $( '.scroll-down-icon > .fa' ).addClass('animated swing');
     }, numberOfContactItems * fadeInDelay + 5000);
   });
 
   $('.category-grid').on('click', '.category-item.closed, .read-more-icon.open', function( e ) {
-    var $categoryItem = $(this).closest('.category-item');
+    var $categoryItem = $( this ).closest('.category-item');
     $categoryItem.toggleClass( 'open closed' );
     $categoryItem.find( '.category-text' ).stop().slideToggle();
     $categoryItem.find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle open closed' );
   });
 
+  // Scroll smoothly to element with id matching clicked element
+  $( '.scroll-down-icon' ).click(function( e ) {
+    $( 'html, body' ).animate({ scrollTop: $( '#' + $(this).attr('data-target') ).offset().top }, animationDuration/2);
+  });
+
   // Set copyright year to current year
   $( '#current-year' ).text( (new Date).getFullYear() );
-})
+});
