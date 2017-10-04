@@ -29,11 +29,13 @@ $( document ).ready( function() {
     }, numberOfContactItems * fadeInDelay + 5000);
   });
 
-  $('.category-grid').on('click', '.category-item.closed, .read-more-icon.open', function( e ) {
+  $('.category-grid').on('click', '.category-item', function( e ) {
     var $categoryItem = $( this ).closest('.category-item');
     $categoryItem.toggleClass( 'open closed' );
     $categoryItem.find( '.category-text' ).stop().slideToggle();
     $categoryItem.find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle open closed' );
+  }).find('.category-text').click(function( e ) {
+    return false;
   });
 
   // Scroll smoothly to element with id matching clicked element
