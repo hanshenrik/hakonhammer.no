@@ -34,8 +34,8 @@ $( document ).ready( function() {
     $categoryItem.toggleClass( 'open closed' );
     $categoryItem.find( '.category-text' ).stop().slideToggle();
     $categoryItem.find( '.read-more-icon' ).toggleClass( 'fa-chevron-circle-down fa-times-circle open closed' );
-  }).find('.category-text').click(function( e ) {
-    return false;
+  }).find('.category-text').on('click', function( e ) {
+    e.stopPropagation();
   });
 
   // Scroll smoothly to element with id matching clicked element
