@@ -21,7 +21,7 @@ $( document ).ready( function() {
     });
 
     setTimeout( function() {
-      $( '.category-item' ).first().click();
+      $( '.category-item' ).first().not( '.open' ).click();
     }, numberOfContactItems * fadeInDelay);
 
     setTimeout( function() {
