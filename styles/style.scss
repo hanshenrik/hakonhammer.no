@@ -94,8 +94,8 @@ a {
   justify-content: center;
   align-items: center;
 
-  background-color: $black-transparent;
-  @include box-shadow($color: $black-transparent);
+  background-color: $black-dark;
+  @include box-shadow($color: $black-transparent-heavy);
 
   @media (min-width: $screen-small) {
     position: absolute;
